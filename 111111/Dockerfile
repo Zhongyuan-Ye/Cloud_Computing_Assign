@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy the content of the local src directory to the working directory
-ADD ./HW1 .
+COPY ./HW1 /app
 
 # Specify the command to run on container start
-CMD ["python", "./HW1/main.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "1024"]
